@@ -1,6 +1,8 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
+  "examples": "Examples",
+  "api": "API",
+  "skills": "Skills",
   "advanced": "Advanced (A Folder)",
   "about": {
     "title": "About",
