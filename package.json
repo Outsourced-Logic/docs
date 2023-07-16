@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "multion-docs",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "MultiOn docs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,10 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/MULTI-ON/docs.git"
   },
-  "author": "Shu Ding <g@shud.in>",
-  "license": "MIT",
+  "author": "Div Garg <div@multion.ai>",
   "bugs": {
     "url": "https://github.com/shuding/nextra-docs-template/issues"
   },
