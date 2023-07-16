@@ -1,6 +1,6 @@
 # MULTION Docs 
 
-Docs for building on top of [MultiOn](https://multion.ai).
+Documentation for building on top of [MULTION](https://multion.ai).
 
 [![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
 
