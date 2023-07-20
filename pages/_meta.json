@@ -1,9 +1,8 @@
 {
   "index": "Introduction",
-  "examples": "Examples",
-  "api": "API",
+  "installation":"Installation & Upgrade",
+  "API":"API",
   "skills": "Skills",
-  "advanced": "Advanced (A Folder)",
   "about": {
     "title": "About",
     "type": "page"
@@ -14,4 +13,5 @@
     "href": "https://twitter.com/MultiON_AI",
     "newWindow": true
   }
+  
 }
