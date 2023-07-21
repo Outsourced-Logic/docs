@@ -1,1 +1,105 @@
-# LangChain
+# Usage with Langchain 🦜️
+## Dependencies
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+ 
+<Tabs items={['Python', 'JS']}>
+  <Tab>
+  ```python copy
+  # LANGCHAIN EXAMPLE
+from langchain import LLMMathChain, OpenAI, SerpAPIWrapper, SQLDatabase, SQLDatabaseChain
+from langchain.agents import initialize_agent, Tool
+from langchain.agents import AgentType
+from langchain.chat_models import ChatOpenAI
+import os
+
+os.environ["LANGCHAIN_TRACING"] = "true"
+os.environ['OPENAI_API_KEY'] = "<openai_api_key>"
+from langchain.tools import StructuredTool
+
+class MultionAPI:
+    def __init__(self):
+        self.tabId = None
+        self.new_session_count = 0
+
+    def create_session(self, query: str, url: str) -> str:
+        """Always the first step to run any activities that can be done using browser.
+        The function parameters 'query' and 'url' both are compulsary.
+        'query' is the query that you need to perform in the given url.if there is no 'query'set it as open.
+        'url' is the base url of a site."""
+        # Only create new session once and continue using update session
+        if self.new_session_count < 2:
+            response = multion.new_session({"input": query,"url": url})
+            self.new_session_count +=1
+            self.tabId = response['tabId']
+            return  response['message']
+        else:
+            return "Continue using update session"
+
+    def update_session(self, query:str,url:str) -> str:
+        """Updates the existing browser session created using create_session with given action and url, used consequently to handle browser activitites after creating one session of browser.
+        The function parameters 'query' and 'url' both are compulsary.
+        'query' is the query that you need to perform in the given url.if there is no 'query'set it as open.
+        'url' is the base url of a site."""
+        response = multion.update_session(self.tabId, {"input": query,"url": url})
+        return  response['message']
+  ```
+  ``` python copy 
+  multion_api = MultionAPI()
+tool1 = StructuredTool.from_function(multion_api.create_session)
+tool2= StructuredTool.from_function(multion_api.update_session)
+
+llm = OpenAI(temperature=0)
+
+# Structured tools are compatible with the STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION agent type.
+agent_executor = initialize_agent(
+    [tool1, tool2],
+    llm,
+    agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True,
+)
+agent_executor.run(f"look up the most recent rank for the most friendliest city in america")
+  ```
+  </Tab>
+</Tabs>
+
+## Run Sample
+
+ 
+<Tabs items={['Python', 'JS']}>
+  <Tab>
+  ```python copy
+  import multion
+  multion.login()
+  # Now you can make API calls like this:
+  response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
+  print(response)
+  tabId = response['tabId']
+  ```
+  ```python copy
+  response = multion.update_session(tabId, {"input": f"Weather Today","url": "https://www.google.com"})
+  response
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+  async function run() {
+    const multion = new Multion();
+    const h = await multion.login(); // Wait for login to complete
+    await multion.newSession({ input: "show sun pictures" });
+  }
+  
+  run()
+  ```
+
+ 
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
+
+  </Tab>
+</Tabs>
+
+
+

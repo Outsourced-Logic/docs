@@ -1,44 +1,58 @@
+# Direct usage of API
+## Dependencies
+
+import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
+ 
+<Tabs items={['Python', 'JS']}>
+  <Tab>
+  ```python copy
+  pip install multion
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+  npm install multion
+  ```
+  </Tab>
+</Tabs>
 
+## Run Sample
 
-<pre>js filename="demo.js" {3} copy
-let a = 1;
-console.log(a);
-</pre>
+ 
+<Tabs items={['Python', 'JS']}>
+  <Tab>
+  ```python copy
+  import multion
+  multion.login()
+  # Now you can make API calls like this:
+  response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
+  print(response)
+  tabId = response['tabId']
+  ```
+  ```python copy
+  response = multion.update_session(tabId, {"input": f"Weather Today","url": "https://www.google.com"})
+  response
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+  async function run() {
+    const multion = new Multion();
+    const h = await multion.login(); // Wait for login to complete
+    await multion.newSession({ input: "show sun pictures" });
+  }
+  
+  run()
+  ```
 
-<Tabs items={['pnpm', 'npm', 'yarn']}>
-  <Tab>**pnpm**: Fast, disk space efficient package manager.</Tab>
-  <Tab>**npm** is a package manager for the JavaScript programming language.</Tab>
-  <Tab>**Yarn** is a software packaging system.</Tab>
+ 
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
+
+  </Tab>
 </Tabs>
 
 
-```js filename="demo.js" {3} copy
-let a = 1;
 
-console.log(a);
-```
-
-## Component
-
-import { useState } from 'react'
-
-{/* Import CSS modules */}
-import styles from '../../components/counters.module.css'
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)} className={styles.counter}>Clicked {count} times</button>
-    </div>
-  );
-};
-
-<Counter/>
-
-## External Component
-
-import Counters from '../../components/counters'
-
-<Counters />
