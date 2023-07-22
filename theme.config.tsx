@@ -1,7 +1,6 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router';
-import Link from 'next/link'; // Use Next.js Link instead of react-router-dom
 
 const config: DocsThemeConfig = {
   head: (
