@@ -1,9 +1,27 @@
 # Usage with Langchain 🦜️
-## Dependencies
+
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
  
+
+## LangChain integrated version
+```python copy 
+from langchain.agents.agent_toolkits import create_multion_agent
+from langchain.tools.multion.tool import MultionClientTool
+from langchain.agents.agent_types import AgentType
+from langchain.chat_models import ChatOpenAI
+agent_executor = create_multion_agent(
+    llm=ChatOpenAI(temperature=0),
+    tool=MultionClientTool(),
+    agent_type=AgentType.OPENAI_FUNCTIONS
+)
+
+print(agent_executor.run(input="hi",task="show beutiful pictures of new york",url="www.google.com"))
+```
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+
+
 <Tabs items={['Python', 'JS']}>
   <Tab>
   ```python copy
@@ -62,43 +80,7 @@ agent_executor = initialize_agent(
 agent_executor.run(f"look up the most recent rank for the most friendliest city in america")
   ```
   </Tab>
-</Tabs>
-
-## Run Sample
-
- 
-<Tabs items={['Python', 'JS']}>
-  <Tab>
-  ```python copy
-  import multion
-  multion.login()
-  # Now you can make API calls like this:
-  response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
-  print(response)
-  tabId = response['tabId']
-  ```
-  ```python copy
-  response = multion.update_session(tabId, {"input": f"Weather Today","url": "https://www.google.com"})
-  response
-  ```
-  </Tab>
-  <Tab>
-  ``` js copy 
-  async function run() {
-    const multion = new Multion();
-    const h = await multion.login(); // Wait for login to complete
-    await multion.newSession({ input: "show sun pictures" });
-  }
-  
-  run()
-  ```
-
- 
-<Callout type="info" emoji="ℹ️">
- Run above code using **node**
-</Callout>
-
-  </Tab>
+  <Tab>Work in Progress</Tab>
 </Tabs>
 
 
