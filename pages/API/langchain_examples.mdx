@@ -7,25 +7,28 @@ import { Tabs, Tab } from 'nextra/components'
 
 ## LangChain integrated version
 ```python copy 
+
+# IMPORTS
 from langchain.agents.agent_toolkits import MultionToolkit
 import os
 import multion
 from langchain import OpenAI
 from langchain.agents import initialize_agent, AgentType
+from langchain.agents.agent_toolkits import MultionToolkit
 
 os.environ["LANGCHAIN_TRACING"] = "true"
 
-
+# MultiOn Toolkit (pip install multion)
 toolkit = MultionToolkit()
 tools = toolkit.get_tools()
 multion.login() # MultiOn -> Login to the MultiOn Website 
 
-
+# Selecting LLM
 key = "your_api_key"
 llm = OpenAI(temperature=0, openai_api_key = key)
-from langchain.agents.agent_toolkits import MultionToolkit
-toolkit = MultionToolkit()
-tools=toolkit.get_tools()
+
+# Intialize Agent
+
 agent = initialize_agent(
     tools=toolkit.get_tools(),
     llm=llm,
@@ -33,7 +36,7 @@ agent = initialize_agent(
     verbose = True
 )
 
-
+# Running the Command
 temp = agent.run("Show Beautiful Pictures of New York")
 ```
 
