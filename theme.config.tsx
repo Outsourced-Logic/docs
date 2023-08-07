@@ -28,7 +28,7 @@ const config: DocsThemeConfig = {
     }
   },
  
-  logo: <span><img style={{display:"inline"}} src=".\icon-48.png" /> MULTION AI</span>,
+  logo: <span><img style={{display:"inline"}} src=".\icon-1012.png" /> MULTION AI</span>,
   project: {
     link: 'https://github.com/MULTI-ON/docs',
   },
