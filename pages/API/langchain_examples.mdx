@@ -7,34 +7,22 @@ import { Tabs, Tab } from 'nextra/components'
 
 ## LangChain Integration
 ```python copy 
-
 # IMPORTS
-from langchain.agents.agent_toolkits import MultionToolkit
-import os
-import multion
-from langchain import OpenAI
+from langchain import ChatOpenAI
 from langchain.agents import initialize_agent, AgentType
 from langchain.agents.agent_toolkits import MultionToolkit
 
-os.environ["LANGCHAIN_TRACING"] = "true"
-
-# MultiOn Toolkit (pip install multion)
-toolkit = MultionToolkit()
-tools = toolkit.get_tools()
+import multion
 multion.login() # MultiOn -> Login to the MultiOn Website 
-
 
 # Intialize Agent
 agent = initialize_agent(
-    tools=toolkit.get_tools(),
-    llm=OpenAI(temperature=0),
+    tools=MultionToolkit().get_tools(),
+    llm=ChatOpenAI(temperature=0),
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
     verbose = True
 )
 
-# Running the Command
-temp = agent.run("Show Beautiful Pictures of New York")
+# Running the Agent
+print(agent.run("Show Beautiful Pictures of New York"))
 ```
-
-
-- Get more samples at [API repository](https://github.com/MULTI-ON/api).
