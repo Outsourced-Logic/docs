@@ -1,0 +1,62 @@
+# Direct usage of API
+## Dependencies
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+ 
+<Tabs items={['Curl','Python', 'JS']}>
+  <Tab>
+  ```curl copy
+  Generate Authorization Token using Python or JS. It will be stored in 
+  linux based system: ~/.multion/multion_token.enc
+  Windows system: C:\Users\<user-name>\.multion\multion_token.enc
+  ```
+  </Tab> 
+  <Tab>
+  ```python copy
+  pip install multion
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+  npm install multion
+  ```
+  </Tab>
+</Tabs>
+
+## Run Sample
+
+ 
+<Tabs items={['Curl','Python', 'JS']}>
+  <Tab>
+
+  ```curl copy
+    Generate Authorization Token using Python or JS. It will be stored in 
+  linux based system: ~/.multion/multion_token.enc
+  Windows system: C:\Users\<user-name>\.multion\multion_token.enc
+  ```
+  </Tab>
+  <Tab>
+
+  ```python copy
+    multion.login()
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+    await multion.login()
+   
+ 
+  ```
+
+ 
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
+
+  </Tab>
+</Tabs>
+
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+
+

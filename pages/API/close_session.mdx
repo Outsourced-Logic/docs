@@ -1,0 +1,58 @@
+# Direct usage of API
+## Dependencies
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+ 
+<Tabs items={['Curl','Python', 'JS']}>
+  <Tab>
+  ```curl copy
+  Check login API page to know how to generate <AUTH_TOKEN>
+  ```
+  </Tab>
+  <Tab>
+  ```python copy
+  pip install multion
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+  npm install multion
+  ```
+  </Tab>
+</Tabs>
+
+## Run Sample
+
+ 
+<Tabs items={['Curl','Python', 'JS']}>
+  <Tab>
+
+  ```curl copy
+  curl --location --request DELETE 'https://api.multion.ai/session/1821386159' \
+--header 'Authorization: Bearer <AUTH_TOKEN>'
+  ```
+  </Tab>
+  <Tab>
+
+  ```python copy
+    multion.close_session(tabId)
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+    await multion.close_session(tabId)
+   
+  ```
+
+ 
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
+
+  </Tab>
+</Tabs>
+
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+
+

@@ -1,4 +1,6 @@
-{
-    "api_examples":"Examples",
-    "langchain_examples":"Langchain Example"
+{   "login":"Login",
+    "create_session":"Create Session",
+    "update_session":"Update Session",
+    "close_session":"Close Session",
+    "session_list":"Session List"
 }
