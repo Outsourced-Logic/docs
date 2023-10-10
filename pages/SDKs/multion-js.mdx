@@ -1,0 +1,40 @@
+# Direct usage of API
+## Dependencies
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+ 
+<Tabs items={['JS']}>
+  <Tab>
+  ``` js copy 
+  npm install multion
+  ```
+  </Tab>
+</Tabs>
+
+## Run Sample
+
+ 
+<Tabs items={['JS']}>
+  <Tab>
+  ``` js copy 
+  async function run() {
+    const multion = new Multion();
+    const h = await multion.login(); // Wait for login to complete
+    await multion.newSession({ input: "show sun pictures" });
+  }
+  
+  run()
+  ```
+
+ 
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
+
+  </Tab>
+</Tabs>
+
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+
+
