@@ -1,0 +1,31 @@
+# Usage with Llama Hub 🦙
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+ 
+
+## Llama Hub integrated version
+```python copy 
+# Set up OpenAI
+import openai
+from llama_index.agent import OpenAIAgent
+openai.api_key = 'sk-your-key'
+
+
+# Set up MultiOn tool
+from llama_hub.tools.multion.base import MultionToolSpec
+multion_tool = MultionToolSpec()
+
+agent = OpenAIAgent.from_tools(
+    multion_tool.to_tool_list(),
+    max_function_calls=10,
+    verbose=True,
+)
+
+
+print(agent.chat('whats the most recent blog post from openai'))
+
+```
+
+
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
