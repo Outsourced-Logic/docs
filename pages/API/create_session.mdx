@@ -1,0 +1,64 @@
+# Direct usage of API
+## Dependencies
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+ 
+<Tabs items={['Curl','Python', 'JS']}>
+  <Tab>
+  ```curl copy
+  Check login API page to know how to generate <AUTH_TOKEN>
+  ```
+  </Tab>
+  <Tab>
+  ```python copy
+  pip install multion
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+  npm install multion
+  ```
+  </Tab>
+</Tabs>
+
+## Run Sample
+
+ 
+<Tabs items={['Curl','Python', 'JS']}>
+  <Tab>
+
+  ```curl copy
+   curl --location 'https://api.multion.ai/sessions' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <AUTH_TOKEN>' \
+--data '{
+    "input": "Weather Today",
+    "url": "https://www.google.com"
+}'
+  ```
+  </Tab>
+  <Tab>
+
+  ```python copy
+    response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+
+    await multion.new_session({ input: "Weather Today" , url:"https://www.google.com" });
+ 
+  ```
+
+ 
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
+
+  </Tab>
+</Tabs>
+
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+
+

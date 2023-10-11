@@ -4,12 +4,7 @@
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
  
-<Tabs items={['Python', 'JS']}>
-  <Tab>
-  ```python copy
-  pip install multion
-  ```
-  </Tab>
+<Tabs items={['JS']}>
   <Tab>
   ``` js copy 
   npm install multion
@@ -20,21 +15,7 @@ import { Tabs, Tab } from 'nextra/components'
 ## Run Sample
 
  
-<Tabs items={['Python', 'JS']}>
-  <Tab>
-  ```python copy
-  import multion
-  multion.login()
-  # Now you can make API calls like this:
-  response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
-  print(response)
-  tabId = response['tabId']
-  ```
-  ```python copy
-  response = multion.update_session(tabId, {"input": f"Weather Today","url": "https://www.google.com"})
-  response
-  ```
-  </Tab>
+<Tabs items={['JS']}>
   <Tab>
   ``` js copy 
   async function run() {
