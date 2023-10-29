@@ -54,10 +54,10 @@ const config: DocsThemeConfig = {
  
   logo: <span>{logo} MULTION AI</span>,
   project: {
-    link: 'https://github.com/MULTI-ON/docs',
+    link: 'https://github.com/MULTI-ON/api',
   },
   chat: {
-    link: 'https://discord.com',
+    link: 'https://discord.gg/Zj5RDdxbee',
   },
   docsRepositoryBase: 'https://github.com/MULTI-ON/docs',
   footer: {
