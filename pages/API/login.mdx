@@ -1,17 +1,13 @@
 # Direct usage of API
+
+The following documentation provides a step-by-step guide to using the Multion API. This guide is designed to be straightforward and easy to follow for developers of all skill levels.
+
 ## Dependencies
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
  
-<Tabs items={['Curl','Python', 'JS']}>
-  <Tab>
-  ```curl copy
-  Generate Authorization Token using Python or JS. It will be stored in 
-  linux based system: ~/.multion/multion_token.enc
-  Windows system: C:\Users\<user-name>\.multion\multion_token.enc
-  ```
-  </Tab> 
+<Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
   pip install multion
@@ -22,20 +18,21 @@ import { Tabs, Tab } from 'nextra/components'
   npm install multion
   ```
   </Tab>
+  <Tab>
+  ```curl copy
+For Curl, an authorization token is needed. This token can be generated using Python or JavaScript and will be stored in the following locations:
+
+On Linux and Mac: ~/.multion/multion_token.enc
+On Windows: C:\Users\<user-name>\.multion\multion_token.enc
+  ```
+  </Tab> 
 </Tabs>
 
 ## Run Sample
 
  
-<Tabs items={['Curl','Python', 'JS']}>
-  <Tab>
+<Tabs items={['Python', 'JS', 'Curl']}>
 
-  ```curl copy
-    Generate Authorization Token using Python or JS. It will be stored in 
-  linux based system: ~/.multion/multion_token.enc
-  Windows system: C:\Users\<user-name>\.multion\multion_token.enc
-  ```
-  </Tab>
   <Tab>
 
   ```python copy
@@ -45,18 +42,21 @@ import { Tabs, Tab } from 'nextra/components'
   <Tab>
   ``` js copy 
     await multion.login()
-   
- 
   ```
-
- 
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
 </Callout>
-
+  </Tab>
+  <Tab>
+  ```curl copy
+   Generate Authorization Token using Python or JS. Token will be stored at the specified location.
+  Windows system: C:\Users\<user-name>\.multion\multion_token.enc
+  ```
   </Tab>
 </Tabs>
 
-- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+### Additional Resources
+
+- For more examples and in-depth usage scenarios, visit the [Multion API Repository](https://github.com/MULTI-ON/api).
 
 
