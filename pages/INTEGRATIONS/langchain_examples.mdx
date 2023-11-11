@@ -7,7 +7,6 @@ import { Tabs, Tab } from 'nextra/components'
 
 ## LangChain integrated version
 ```python copy 
-
 # Authorize connection to your Browser extention
 import multion
 multion.login()
@@ -17,6 +16,7 @@ from langchain.llms import OpenAI
 from langchain.agents import initialize_agent, AgentType
 from langchain.agents.agent_toolkits import MultionToolkit
 import os
+
 os.environ["OPENAI_API_KEY"] = "API_KEY"
 llm = OpenAI(temperature=0)
 
