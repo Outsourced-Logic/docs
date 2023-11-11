@@ -1,10 +1,16 @@
-# Direct usage of API
+# List Running Sessions
+
+List the currently running sessions with the MultiOn Agent. This is crucial for managing and monitoring ongoing interactions with the API.
+
+- **Purpose**: Listing running sessions provides an overview of all active interactions, allowing for better management and oversight.
+- **Use Cases**: Useful for tracking session activity, diagnosing issues, or understanding user interactions at any given time.
+
 ## Dependencies
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
  
-<Tabs items={['Python', 'JS']}>
+<Tabs items={['Python', 'JS', 'CURL']}>
   <Tab>
   ```python copy
   pip install multion
@@ -15,25 +21,20 @@ import { Tabs, Tab } from 'nextra/components'
   npm install multion
   ```
   </Tab>
-</Tabs>
-
-## Run Sample
-
- 
-<Tabs items={['Curl','Python', 'JS']}>
   <Tab>
   ```curl copy
   Check login API page to know how to generate <AUTH_TOKEN>
   ```
   </Tab>
-  <Tab>
-  ```curl copy
-curl --location 'https://api.multion.ai/sessions/' \
---header 'Authorization: Bearer <AUTH_TOKEN>'
-  ```
-  </Tab>
-  <Tab>
+</Tabs>
 
+## Listing Running Sessions
+
+Retrieve a list of all active sessions using the following sample code:
+
+ 
+<Tabs items={['Python', 'JS', 'Curl']}>
+  <Tab>
   ```python copy
     multion.list_sessions()
   ```
@@ -41,18 +42,19 @@ curl --location 'https://api.multion.ai/sessions/' \
   <Tab>
   ``` js copy 
     await multion.list_sessions()
-   
- 
   ```
-
- 
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
 </Callout>
-
+  </Tab>
+  <Tab>
+  ```curl copy
+curl --location 'https://api.multion.ai/sessions/' \
+--header 'Authorization: Bearer <AUTH_TOKEN>'
+  ```
   </Tab>
 </Tabs>
 
-- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+- For additional examples and detailed API usage, visit the [MultiOn API repository](https://github.com/MULTI-ON/api).
 
 
