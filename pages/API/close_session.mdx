@@ -1,15 +1,18 @@
-# Direct usage of API
+# Close a Session
+
+Close an existing session with the MultiOn Agent. This is useful for conclude an interaction securely and efficiently.
+
+## Understanding Session Closure
+
+- **Purpose**: Closing a session terminates the current interaction, ensuring that no further processing or data exchange occurs in that session.
+- **Best Practices**: It's recommended to close sessions when they are no longer needed to free up resources and maintain optimal performance.
+
 ## Dependencies
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
  
-<Tabs items={['Curl','Python', 'JS']}>
-  <Tab>
-  ```curl copy
-  Check login API page to know how to generate <AUTH_TOKEN>
-  ```
-  </Tab>
+<Tabs items={['Python', 'JS','Curl']}>
   <Tab>
   ```python copy
   pip install multion
@@ -20,19 +23,17 @@ import { Tabs, Tab } from 'nextra/components'
   npm install multion
   ```
   </Tab>
+  <Tab>
+  ```curl copy
+  Check login API page to know how to generate <AUTH_TOKEN>
+  ```
+  </Tab>
 </Tabs>
 
 ## Run Sample
 
  
-<Tabs items={['Curl','Python', 'JS']}>
-  <Tab>
-
-  ```curl copy
-  curl --location --request DELETE 'https://api.multion.ai/session/1821386159' \
---header 'Authorization: Bearer <AUTH_TOKEN>'
-  ```
-  </Tab>
+<Tabs items={['Python', 'JS','Curl']}>
   <Tab>
 
   ```python copy
@@ -42,17 +43,19 @@ import { Tabs, Tab } from 'nextra/components'
   <Tab>
   ``` js copy 
     await multion.close_session(tabId)
-   
   ```
-
- 
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
 </Callout>
-
+  </Tab>
+  <Tab>
+  ```curl copy
+  curl --location --request DELETE 'https://api.multion.ai/session/1821386159' \
+--header 'Authorization: Bearer <AUTH_TOKEN>'
+  ```
   </Tab>
 </Tabs>
 
-- Get more samples at [API repository](https://github.com/MULTI-ON/api).
+- For more examples and detailed API usage, explore the [MultiOn API repository](https://github.com/MULTI-ON/api).
 
 
