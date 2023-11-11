@@ -18,23 +18,25 @@ import { Tabs, Tab } from 'nextra/components'
 <Tabs items={['JS']}>
   <Tab>
   ``` js copy 
-  async function run() {
+
     const multion = new Multion();
-    const h = await multion.login(); // Wait for login to complete
-    await multion.newSession({ input: "show sun pictures" });
-  }
-  
-  run()
-  ```
+    await multion.login(); // Wait for login to complete
 
  
+    response = await multion.newSession({"input": f"Weather Today","url": "https://www.google.com"});
+    console.log(response)
+    let sessionId = response['sessionId']
+  }
+  ```
+  ```js copy
+  response = await multion.update_session(sessionId, {"input": f"Weather Today","url": "https://www.google.com"})
+  response
+  ```
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
 </Callout>
-
   </Tab>
 </Tabs>
 
-- Get more samples at [API repository](https://github.com/MULTI-ON/api).
-
+- For more examples and detailed API usage, explore the [MultiOn API repository](https://github.com/MULTI-ON/api).
 
