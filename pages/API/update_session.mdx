@@ -1,4 +1,7 @@
-# Direct usage of API
+# Update a Session
+
+Update an existing MultiOn session with a new user command.
+
 ## Dependencies
 
 import { Callout } from 'nextra/components'
@@ -17,14 +20,34 @@ import { Tabs, Tab } from 'nextra/components'
   </Tab>
 </Tabs>
 
-## Run Sample
+## Update Session
 
- 
-<Tabs items={['Curl','Python', 'JS']}>
+To update a session, you'll need to provide the session ID (sessionId) and the new input parameters.
+
+### Required Parameters
+- tabId: The unique identifier of the session you wish to update.
+- input: The new or additional information for the session.
+- url: The URL relevant to the updated request.
+
+
+<Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```curl copy
   Check login API page to know how to generate <AUTH_TOKEN>
   ```
+  </Tab>
+  <Tab>
+  ```python copy
+    response = multion.update_session(tabId, {"input": f"what is the weather today","url": "https://www.google.com"})
+  ```
+  </Tab>
+  <Tab>
+  ``` js copy 
+    await multion.update_session(tabId, {"input": f"what is the weather today","url": "https://www.google.com"})
+  ```
+<Callout type="info" emoji="ℹ️">
+ Run above code using **node**
+</Callout>
   </Tab>
   <Tab>
   ```curl copy
@@ -37,27 +60,8 @@ curl --location 'https://api.multion.ai/session/{tabId}' \
 }'
   ```
   </Tab>
-  <Tab>
-
-  ```python copy
-    response = multion.update_session(tabId, {"input": f"what is the weather today","url": "https://www.google.com"})
-  ```
-  </Tab>
-  <Tab>
-  ``` js copy 
-
-    await multion.update_session(tabId, {"input": f"what is the weather today","url": "https://www.google.com"})
- 
-  ```
-
- 
-<Callout type="info" emoji="ℹ️">
- Run above code using **node**
-</Callout>
-
-  </Tab>
 </Tabs>
 
-- Get more samples at [API repository](https://github.com/MULTI-ON/api)
+- Explore additional examples and detailed API usage at the [MultiOn API repository](https://github.com/MULTI-ON/api)
 
 
