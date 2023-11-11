@@ -8,6 +8,19 @@ This section explains how to create a new session with the MultiOn Agent. A sess
 - **Use Cases**: Sessions are ideal for handling individual queries, like fetching weather updates or executing a specific task.
 - **Security**: Sessions maintain high levels of security, as each session is authenticated and isolated, protecting the integrity of your data and interactions.
 
+## Session Input
+
+### Required Parameters
+
+- **input**: The user input query or command for the session. This should be a clear, concise statement of what you need.
+  - Example: `"input": "Weather Today in SF"`
+- **url**: The URL where the session will start from. This should be a valid, accessible URL.
+  - Example: `"url": "https://www.google.com"`
+
+### Optional Parameters
+
+- You can also include additional parameters to refine your session's behavior and responses. Refer to the API documentation for a full list of optional parameters.
+
 
 ## Dependencies
 
