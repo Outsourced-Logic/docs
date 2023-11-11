@@ -30,7 +30,7 @@ import { Tabs, Tab } from 'nextra/components'
 To update a session, you'll need to provide the session ID (sessionId) and the new input parameters.
 
 ### Required Parameters
-- **tabId**: The unique identifier of the session you wish to update.
+- **sessionId**: The unique identifier of the session you wish to update.
 - **input**: The new or additional information for the session.
 - **url**: The URL relevant to the updated request.
 
@@ -38,12 +38,12 @@ To update a session, you'll need to provide the session ID (sessionId) and the n
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
-    response = multion.update_session(tabId, {"input": f"what is the weather today","url": "https://www.google.com"})
+    response = multion.update_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
   ```
   </Tab>
   <Tab>
   ``` js copy 
-    await multion.update_session(tabId, {"input": f"what is the weather today","url": "https://www.google.com"})
+    await multion.update_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
   ```
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
@@ -51,7 +51,7 @@ To update a session, you'll need to provide the session ID (sessionId) and the n
   </Tab>
   <Tab>
   ```curl copy
-curl --location 'https://api.multion.ai/session/{tabId}' \
+curl --location 'https://api.multion.ai/session/{sessionId}' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <AUTH_TOKEN>' \
 --data '{
