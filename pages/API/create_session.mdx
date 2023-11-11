@@ -38,9 +38,9 @@ To get started, make sure you have the required dependencies installed:
 Create a new session by running the following code:
 
 <Tabs items={['Python', 'JS', 'Curl']}>
-<Tab>
-```python copy
-response = multion.new_session({"input": "Weather Today", "url": "https://www.google.com"})
+  <Tab>
+  ```python copy
+  response = multion.new_session({"input": "Weather Today", "url": "https://www.google.com"})
   </Tab>
   <Tab>
   ```js copy 
@@ -51,15 +51,14 @@ response = multion.new_session({"input": "Weather Today", "url": "https://www.go
   </Callout>
   </Tab>
   <Tab>
-curl
-Copy code
-curl --location 'https://api.multion.ai/sessions' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer <AUTH_TOKEN>' \
---data '{
-  "input": "Weather Today",
-  "url": "https://www.google.com"
-}'
+  ```curl copy
+  curl --location 'https://api.multion.ai/sessions' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer <AUTH_TOKEN>' \
+  --data '{
+    "input": "Weather Today",
+    "url": "https://www.google.com"
+  }'
   </Tab>
 </Tabs>
 
