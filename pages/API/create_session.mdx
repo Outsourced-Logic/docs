@@ -1,61 +1,65 @@
-# Direct usage of API
+# Create a New Session
+
+This section explains how to create a new session with the MultiOn Agent. A session in this context refers to a stateful instance of interaction with our Agent for a specific user query or workflow.
+
+## Understanding Sessions
+
+- **Session Lifecycle**: A session begins when you initiate it with a input url and prompt and ends whens the Agent has completed the task with the required Actions. Each session is isolated, ensuring that data and interactions are not shared across sessions.
+- **Use Cases**: Sessions are ideal for handling individual queries, like fetching weather updates or handling a specific task.
+- **Security**: Sessions maintain high levels of security, as each session is authenticated and isolated, protecting the integrity of your data and interactions.
+
+
 ## Dependencies
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
- 
-<Tabs items={['Curl','Python', 'JS']}>
+
+To get started, make sure you have the required dependencies installed:
+
+<Tabs items={['Python', 'JS', 'Curl']}>
+  <Tab>
+  ```python copy
+  pip install multion
+  </Tab>
+  <Tab>
+  ```js copy 
+  npm install multion
+  ```
+  </Tab>
   <Tab>
   ```curl copy
   Check login API page to know how to generate <AUTH_TOKEN>
   ```
   </Tab>
-  <Tab>
-  ```python copy
-  pip install multion
-  ```
-  </Tab>
-  <Tab>
-  ``` js copy 
-  npm install multion
-  ```
-  </Tab>
 </Tabs>
 
-## Run Sample
+## Create Session
 
- 
-<Tabs items={['Curl','Python', 'JS']}>
+Create a new session by running the following code:
+
+<Tabs items={['Python', 'JS', 'Curl']}>
+<Tab>
+```python copy
+response = multion.new_session({"input": "Weather Today", "url": "https://www.google.com"})
+  </Tab>
   <Tab>
-
-  ```curl copy
-   curl --location 'https://api.multion.ai/sessions' \
+  ```js copy 
+  await multion.new_session({input: "Weather Today", url: "https://www.google.com"});
+  ```
+  <Callout type="info" emoji="ℹ️">
+  Run the above code using **Node.js**
+  </Callout>
+  </Tab>
+  <Tab>
+curl
+Copy code
+curl --location 'https://api.multion.ai/sessions' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <AUTH_TOKEN>' \
 --data '{
-    "input": "Weather Today",
-    "url": "https://www.google.com"
+  "input": "Weather Today",
+  "url": "https://www.google.com"
 }'
-  ```
-  </Tab>
-  <Tab>
-
-  ```python copy
-    response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
-  ```
-  </Tab>
-  <Tab>
-  ``` js copy 
-
-    await multion.new_session({ input: "Weather Today" , url:"https://www.google.com" });
- 
-  ```
-
- 
-<Callout type="info" emoji="ℹ️">
- Run above code using **node**
-</Callout>
-
   </Tab>
 </Tabs>
 
