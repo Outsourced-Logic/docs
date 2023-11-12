@@ -25,7 +25,7 @@ import { Tabs, Tab } from 'nextra/components'
   # Now you can make API calls like this:
   response = multion.new_session({"input": f"Weather Today","url": "https://www.google.com"})
   print(response)
-  sessionId = response['sessionId']
+  sessionId = response['session_id']
   ```
   ```python copy
   response = multion.update_session(sessionId, {"input": f"Weather Today","url": "https://www.google.com"})
