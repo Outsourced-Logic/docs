@@ -24,7 +24,7 @@ import { Tabs, Tab } from 'nextra/components'
 
    response = await multion.newSession({"input": f"Weather Today","url": "https://www.google.com"});
    console.log(response)
-   let sessionId = response['sessionId']
+   let sessionId = response['session_id']
   ```
   ```js copy
   response = await multion.update_session(sessionId, {"input": f"Weather Today","url": "https://www.google.com"})
