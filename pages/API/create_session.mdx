@@ -75,11 +75,13 @@ Create a new session by running the following code:
   ```curl copy
   curl --location 'https://api.multion.ai/sessions' \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer <AUTH_TOKEN>' \
+  --header 'Authorization: Bearer <AUTH_TOKEN>' \ # Use this for OAuth
+  --header 'X_MULTION_API_KEY: <API_KEY>' \ # Or use this for API Key
   --data '{
     "input": "Weather Today",
     "url": "https://www.google.com"
   }'
+  ```
   ```
   </Tab>
 </Tabs>

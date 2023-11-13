@@ -20,13 +20,10 @@ import { Tabs, Tab } from 'nextra/components'
   </Tab>
   <Tab>
   ```curl copy
-For Curl, an authorization token is needed. This token can be generated using Python or JavaScript and will be stored in the following locations:
+For Curl, an authorization token or API Key is needed. See instructions below.
 
-
-On Linux and Mac: ~/.multion/multion_token.enc
-On Windows: C:\Users\<user-name>\.multion\multion_token.enc
-  ```
-  </Tab> 
+````
+</Tab>
 </Tabs>
 
 ## Authorization
@@ -34,11 +31,12 @@ By default, the Multion API uses OAuth2 for secure authentication. This method e
 
 <Tabs items={['Python', 'JS', 'Curl']}>
 
-  <Tab>
+<Tab>
 
-  ```python copy
-    multion.login()
-  ```
+```python copy
+  multion.login()
+````
+
   </Tab>
   <Tab>
   ``` js copy 
@@ -56,9 +54,10 @@ Generate Authorization Token using Python or JS. Token will be stored at the spe
 </Tabs>
 
 ## Optional: Generating API Keys
-If you prefer using API keys instead of OAuth2, you can generate them with the use_api=True argument in your login method.
 
-<Tabs items={['Python', 'JS']}>
+If you prefer using API keys instead of OAuth2, you can generate them with the `use_api=True` argument in your login method.
+
+<Tabs items={['Python', 'JS', 'Curl']}>
 <Tab>
  ```python copy
  # Generate API Key using Python
@@ -71,6 +70,12 @@ If you prefer using API keys instead of OAuth2, you can generate them with the u
  await multion.login({use_api: true})
  ```
   </Tab>
+  <Tab>
+ ```curl copy
+Generate an api key by visiting [app.multion.ai](https://app.multion.ai/api-tokens)
+Save the api key as MULTION_API_KEY environment variable
+ ```
+  </Tab>
 </Tabs>
 
 - The API key will be automatically stored in your system and used for subsequent API requests.
@@ -78,5 +83,3 @@ If you prefer using API keys instead of OAuth2, you can generate them with the u
 ### Additional Resources
 
 - For more examples and in-depth usage scenarios, visit the [Multion API Repository](https://github.com/MULTI-ON/api).
-
-

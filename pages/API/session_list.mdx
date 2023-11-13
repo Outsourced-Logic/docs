@@ -32,7 +32,6 @@ import { Tabs, Tab } from 'nextra/components'
 
 Retrieve a list of all active sessions using the following sample code:
 
- 
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
@@ -49,12 +48,17 @@ Retrieve a list of all active sessions using the following sample code:
   </Tab>
   <Tab>
   ```curl copy
+Pass either the <AUTH_TOKEN> or the <API_KEY> in the header.
+
 curl --location 'https://api.multion.ai/sessions/' \
---header 'Authorization: Bearer <AUTH_TOKEN>'
-  ```
-  </Tab>
+--header 'Authorization: Bearer <AUTH_TOKEN>' \ # Use this for OAuth
+--header 'X_MULTION_API_KEY: <API_KEY>' \ # Or use this for API Key
+
+```
+</Tab>
 </Tabs>
 
 - For additional examples and detailed API usage, visit the [MultiOn API repository](https://github.com/MULTI-ON/api).
 
 
+```

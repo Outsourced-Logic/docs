@@ -32,13 +32,13 @@ import { Tabs, Tab } from 'nextra/components'
 
 ## Run Sample
 
- 
 <Tabs items={['Python', 'JS','Curl']}>
   <Tab>
 
-  ```python copy
-    multion.close_session(sessionId)
-  ```
+```python copy
+  multion.close_session(sessionId)
+```
+
   </Tab>
   <Tab>
   ``` js copy 
@@ -50,12 +50,17 @@ import { Tabs, Tab } from 'nextra/components'
   </Tab>
   <Tab>
   ```curl copy
-  curl --location --request DELETE 'https://api.multion.ai/session/{sessionId}' \
---header 'Authorization: Bearer <AUTH_TOKEN>'
-  ```
-  </Tab>
+Pass either the <AUTH_TOKEN> or the <API_KEY> in the header.
+
+curl --location --request DELETE 'https://api.multion.ai/session/{sessionId}' \
+--header 'Authorization: Bearer <AUTH_TOKEN>' \ # Use this for OAuth
+--header 'X_MULTION_API_KEY: <API_KEY>' \ # Or use this for API Key
+
+```
+</Tab>
 </Tabs>
 
 - For more examples and detailed API usage, explore the [MultiOn API repository](https://github.com/MULTI-ON/api).
 
 
+```

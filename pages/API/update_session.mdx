@@ -30,10 +30,10 @@ import { Tabs, Tab } from 'nextra/components'
 To update a session, you'll need to provide the session ID (sessionId) and the new input parameters.
 
 ### Required Parameters
+
 - **sessionId**: The unique identifier of the session you wish to update.
 - **input**: The new or additional information for the session.
 - **url**: The URL relevant to the updated request.
-
 
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
@@ -51,17 +51,22 @@ To update a session, you'll need to provide the session ID (sessionId) and the n
   </Tab>
   <Tab>
   ```curl copy
+Pass either the <AUTH_TOKEN> or the <API_KEY> in the header.
+
 curl --location 'https://api.multion.ai/session/{sessionId}' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer <AUTH_TOKEN>' \
+--header 'Authorization: Bearer <AUTH_TOKEN>' \ # Use this for OAuth
+--header 'X_MULTION_API_KEY: <API_KEY>' \ # Or use this for API Key
 --data '{
-    "input": "what is the weather today",
-    "url": "https://www.google.com"
+"input": "what is the weather today",
+"url": "https://www.google.com"
 }'
-  ```
-  </Tab>
+
+```
+</Tab>
 </Tabs>
 
 - Explore additional examples and detailed API usage at the [MultiOn API repository](https://github.com/MULTI-ON/api)
 
 
+```
