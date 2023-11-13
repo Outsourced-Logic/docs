@@ -1,12 +1,11 @@
 # Usage with Langchain 🦜️
 
-
-import { Callout } from 'nextra/components'
-import { Tabs, Tab } from 'nextra/components'
- 
+import { Callout } from "nextra/components";
+import { Tabs, Tab } from "nextra/components";
 
 ## LangChain integrated version
-```python copy 
+
+```python copy
 # Authorize connection to your Browser extention
 import multion
 multion.login()
@@ -20,19 +19,17 @@ import os
 os.environ["OPENAI_API_KEY"] = "API_KEY"
 llm = OpenAI(temperature=0)
 
-toolkit = MultionToolkit()
-tools=toolkit.get_tools()
+multion_toolkit = MultionToolSpec()
+tool = StructuredTool.from_function(multion_toolkit.browse)
+
 agent = initialize_agent(
-    tools=toolkit.get_tools(),
-    llm=llm,
+    [tool],
+    llm,
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
-    verbose = True
+    verbose=True,
 )
 
-agent.run(
-    "Tweet 'Hi from MultiOn'"
-)
+agent.run("Tweet 'Hi from MultiOn'")
 ```
-
 
 - Get more samples at [API repository](https://github.com/MULTI-ON/api).
