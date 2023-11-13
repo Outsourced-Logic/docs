@@ -7,7 +7,7 @@ Update an existing MultiOn session with a new user command.
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
  
-<Tabs items={['Python', 'JS']}>
+<Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
   pip install multion
@@ -50,7 +50,7 @@ To update a session, you'll need to provide the session ID (sessionId) and the n
 </Callout>
   </Tab>
   <Tab>
-  ```curl copy
+```curl copy
 Pass either the <AUTH_TOKEN> or the <API_KEY> in the header.
 
 curl --location 'https://api.multion.ai/session/{sessionId}' \
