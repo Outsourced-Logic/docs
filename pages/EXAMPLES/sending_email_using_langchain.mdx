@@ -1,0 +1,68 @@
+# Sending email using langchain 🦜🔗
+
+This example goes over how to leverage LangChain with Multion to send emails seamlessly. 
+
+### Install Required Packages
+
+Ensure you have the necessary packages installed by running the following commands in your terminal:
+
+```python copy
+  pip install multion
+  pip install langchain
+```
+
+### Import Required Libraries
+
+In your Python script, import the required libraries for the example:
+
+```python copy
+  import multion
+  from langchain.llms.openai import OpenAI
+  from langchain.agents import initialize_agent, AgentType
+  from langchain.agents.agent_toolkits.multion.toolkit import MultionToolkit
+```
+
+### Initialize Multion and Log In
+
+Initialize the Multion toolkit and log in to your Multion account:
+
+```python copy
+  toolkit = MultionToolkit()
+  tools=toolkit.get_tools()
+  multion.login()
+```
+
+### Create OpenAI Language Model Instance
+
+Create an instance of the OpenAI language model using API key
+- Replace **"YOUR_OPENAI_API_KEY"** with your actual OpenAI API key:
+
+```python copy
+  llm = OpenAI(temperature=0, openai_api_key="YOUR_OPENAI_API_KEY")
+```
+
+
+### Initialize Agent
+
+Initialize the agent for structured chat with zero-shot reaction description:
+
+```python copy
+  agent = initialize_agent(
+    tools=toolkit.get_tools(),
+    llm=llm,
+    agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+  )
+```
+
+### Run the Agent
+
+Run the agent with a user query. Update the query variable with your desired email content:
+
+```python copy
+  query = "Send a warm email greeting to div@multion.com"
+  agent.run(query)
+```
+
+Thank you for exploring this LangChain example. 😀
+- Should you have any questions, feel free to reach out on our Discord channel or directly to our team. Happy building! 😊
