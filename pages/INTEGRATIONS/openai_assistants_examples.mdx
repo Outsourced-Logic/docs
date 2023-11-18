@@ -5,6 +5,10 @@ import { Tabs, Tab } from "nextra/components";
 
 ## OpenAI Assistants integrated version
 
+
+
+### Setting Up OpenAI
+
 ```python copy
 import openai
 from openai import OpenAI
@@ -12,35 +16,48 @@ from openai import OpenAI
 client = OpenAI()
 
 # Set your OpenAI API key
-
 openai.api_key = '<openai_api_key>'
 
-# Define the MultiOn browse function
+```
+
+
+
+### Defining MultiOn Browser Function
+
+Define the function to browse the web using natural language instructions. This function enables control over web browsers to fetch and interact with web content:
+
+```python copy
 browse = {
-            "name": "highLevelBrowse",
-            "description": "Browse the web using natural language instructions. This tool enables control over web browsers to fetch and interact with web content.",
-            "parameters": {
-            "type": "object",
-            "properties": {
-                "instruction": {"type": "string", "description": "Detailed natural language instruction for browsing."},
-                "url": {"type": "string", "description": "Optional starting URL for the browsing session."}
-            },
-            "required": ["instruction"]
-            }
-        }
+    "name": "highLevelBrowse",
+    "description": "Browse the web using natural language instructions. This tool enables control over web browsers to fetch and interact with web content.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "instruction": {"type": "string", "description": "Detailed natural language instruction for browsing."},
+            "url": {"type": "string", "description": "Optional starting URL for the browsing session."}
+        },
+        "required": ["instruction"]
+    }
+}
+```
 
-# Define the function to interact with the Assistant
-def agent(query: str): # Create an Assistant
 
+
+
+### Creating Assistant and Interaction
+
+Define the function to interact with the assistant, including creating an assistant with the MultiOn Browse API, setting up a thread with the user's initial message, running the assistant on the thread, and retrieving the response:
+
+```python copy
+def agent(query: str):
     # Create an Assistant with the MultiOn Browse API
     assistant = client.beta.assistants.create(
-    instructions="You are an assistant with the capability to browse the web. Use the MultiOn browser to assist users in fetching and interacting with web content.",
-    model="gpt-4-1106-preview", # or another model of your choice
-    tools=[{
-        "type": "function",
-        "function": browse
-        }
-       ]
+        instructions="You are an assistant with the capability to browse the web. Use the MultiOn browser to assist users in fetching and interacting with web content.",
+        model="gpt-4-1106-preview",  # or another model of your choice
+        tools=[{
+            "type": "function",
+            "function": browse
+        }]
     )
 
     # Create a Thread with the initial user message
@@ -65,25 +82,29 @@ def agent(query: str): # Create an Assistant
     )
 
     return response.content
+```
 
-# Your example prompt
 
-PROMPT = f"""
-You are an expert AI Agent whose job is to find and get a gpu on a given service HYPERSTACK (https://www.hyperstack.cloud). Pass in the full detailed instructions exactly as below to MultiOn for browsing.
 
-    Here are the high-level steps:
-    1. Login and go to reach the gpu selection page
-    2. Click on the Load Provising profile and then select the multion-profile and load it
-    3. After the profile has been correctly selected and loaded continue
-    4. If an on-demand A100 GPU is available with 80GB RAM, then reserve it
-    5. If reservation is successful, then enable ssh access and return public ip to access the machine
+### Example Prompt and Agent Invocation
+
+Define an example prompt and invoke the agent with the prompt to interact with the assistant:
+
+```python copy
+PROMPT = """
+    You are an expert AI Agent whose job is to find and get a GPU on a given service HYPERSTACK (https://www.hyperstack.cloud). Pass in the full detailed instructions exactly as below to MultiOn for browsing.
+
+        Here are the high-level steps:
+        1. Login and go to reach the GPU selection page
+        2. Click on the Load Provising profile and then select the MultiOn-profile and load it
+        3. After the profile has been correctly selected and loaded continue
+        4. If an on-demand A100 GPU is available with 80GB RAM, then reserve it
+        5. If reservation is successful, then enable SSH access and return the public IP to access the machine
 """
 
-
-
 # Invoke the agent with the prompt
-
 agent(query=PROMPT)
 ```
+
 
 - Get more samples at [API repository](https://github.com/MULTI-ON/api).
