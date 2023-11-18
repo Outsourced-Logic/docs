@@ -1,27 +1,43 @@
-# Usage with Langchain 🦜️
+# Usage with Langchain 🦜️🔗
 
 import { Callout } from "nextra/components";
 import { Tabs, Tab } from "nextra/components";
 
 ## LangChain integrated version
 
+### Log In to Multion
+
+Import the required libraries for establishing the connection and ensure you are logged in to your Multion account:
+
 ```python copy
-# Authorize connection to your Browser extention
 import multion
-from multion import MultionToolSpec
 
 multion.login()
+```
 
+### Set Up OpenAI and Initialize Multion Toolkit
 
+Set up the OpenAI language model with your API key, and initialize the Multion toolkit with the browser extension:
+
+- Replace **"YOUR_OPENAI_API_KEY"** with your actual OpenAI API key:
+
+```python copy
+from multion import MultionToolSpec
 from langchain.llms import OpenAI
 from langchain.agents import initialize_agent, AgentType
-from langchain.agents.agent_toolkits import MultionToolkit
 import os
 
-os.environ["OPENAI_API_KEY"] = "API_KEY"
+os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_API_KEY"
 llm = OpenAI(temperature=0)
 
 multion_toolkit = MultionToolSpec(use_api=True, mode="auto")
+```
+
+### Initialize LangChain Agent and Run
+
+Create a browser tool using the Multion toolkit, initialize the LangChain agent with the browser tool, and run the agent with a specific task (e.g., tweeting):
+
+```python copy
 browser = StructuredTool.from_function(multion_toolkit.browse)
 
 agent = initialize_agent(
