@@ -1,0 +1,77 @@
+# Get weather details using Multion-API ✨
+
+This example goes over how to use multion API to get today's weather details. 
+
+### Install Required Packages
+
+Ensure you have the necessary packages installed by running the following commands in your terminal:
+
+```python copy
+  pip install multion
+```
+
+### Import Required Libraries
+
+In your Python script, import the required libraries for the example:
+
+```python copy
+  import multion
+```
+
+### Log in to Multion
+
+Log in to your Multion account with proper credentials:
+
+```python copy
+  multion.login()
+```
+
+### Set Remote (Optional)
+
+If necessary, set the remote option using the following code:
+
+```python copy
+  response = multion.set_remote(False)
+  print(response)
+```
+
+
+### Create a New Session
+
+Create a new session to initiate the weather query:
+
+```python copy
+  response = multion.new_session({"input": "what is the weather today","url": "https://www.google.com"})
+  print(response['message'])
+  session_id = response['session_id']
+  session_id
+```
+
+### Update Session
+
+If needed, update the session with additional information:
+
+```python copy
+  response = multion.update_session(session_id, {"input": "what is the weather today","url": "https://www.google.com"})
+  response['message']
+```
+
+
+### Capture Screenshot
+
+Capture a screenshot of the weather details:
+
+```python copy
+  multion.get_screenshot(response, height=800)
+```
+
+### Close Session
+
+Finally, close the session when done:
+
+```python copy
+  multion.close_session(session_id)
+```
+
+Thank you for exploring this Multion-API example. 😀
+- Should you have any questions, feel free to reach out on our Discord channel or directly to our team. Happy building! 😊
