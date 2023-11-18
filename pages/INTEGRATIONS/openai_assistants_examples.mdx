@@ -1,0 +1,89 @@
+# Usage with the new OpenAI Assistants API
+
+import { Callout } from "nextra/components";
+import { Tabs, Tab } from "nextra/components";
+
+## OpenAI Assistants integrated version
+
+```python copy
+import openai
+from openai import OpenAI
+
+client = OpenAI()
+
+# Set your OpenAI API key
+
+openai.api_key = '<openai_api_key>'
+
+# Define the MultiOn browse function
+browse = {
+            "name": "highLevelBrowse",
+            "description": "Browse the web using natural language instructions. This tool enables control over web browsers to fetch and interact with web content.",
+            "parameters": {
+            "type": "object",
+            "properties": {
+                "instruction": {"type": "string", "description": "Detailed natural language instruction for browsing."},
+                "url": {"type": "string", "description": "Optional starting URL for the browsing session."}
+            },
+            "required": ["instruction"]
+            }
+        }
+
+# Define the function to interact with the Assistant
+def agent(query: str): # Create an Assistant
+
+    # Create an Assistant with the MultiOn Browse API
+    assistant = client.beta.assistants.create(
+    instructions="You are an assistant with the capability to browse the web. Use the MultiOn browser to assist users in fetching and interacting with web content.",
+    model="gpt-4-1106-preview", # or another model of your choice
+    tools=[{
+        "type": "function",
+        "function": browse
+        }
+       ]
+    )
+
+    # Create a Thread with the initial user message
+    thread = openai.Thread.create(
+        assistant=assistant.id,
+        messages=[{
+            "role": "user",
+            "content": query
+        }]
+    )
+
+    # Run the Assistant on the Thread
+    run = openai.Thread.runs.create(
+        thread_id=thread.id,
+        assistant_id=assistant.id
+    )
+
+    # Retrieve the response
+    response = openai.Thread.messages.retrieve(
+        thread_id=thread.id,
+        message_id=run.messages[-1].id
+    )
+
+    return response.content
+
+# Your example prompt
+
+PROMPT = f"""
+You are an expert AI Agent whose job is to find and get a gpu on a given service HYPERSTACK (https://www.hyperstack.cloud). Pass in the full detailed instructions exactly as below to MultiOn for browsing.
+
+    Here are the high-level steps:
+    1. Login and go to reach the gpu selection page
+    2. Click on the Load Provising profile and then select the multion-profile and load it
+    3. After the profile has been correctly selected and loaded continue
+    4. If an on-demand A100 GPU is available with 80GB RAM, then reserve it
+    5. If reservation is successful, then enable ssh access and return public ip to access the machine
+"""
+
+
+
+# Invoke the agent with the prompt
+
+agent(query=PROMPT)
+```
+
+- Get more samples at [API repository](https://github.com/MULTI-ON/api).
