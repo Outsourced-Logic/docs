@@ -1,6 +1,6 @@
-# Sending email using langchain 🦜🔗
+# Making event RSVPs using langchain 🦜🔗
 
-This example goes over how to leverage LangChain with Multion to send emails seamlessly. 
+This example goes over how to leverage LangChain with Multion to rsvp to event invites automatically.
 
 ### Install Required Packages
 
@@ -17,9 +17,9 @@ In your Python script, import the required libraries for the example:
 
 ```python copy
   import multion
+  from multion import MultionToolSpec
   from langchain.llms.openai import OpenAI
   from langchain.agents import initialize_agent, AgentType
-  from langchain.agents.agent_toolkits.multion.toolkit import MultionToolkit
 ```
 
 ### Initialize Multion and Log In
@@ -27,20 +27,21 @@ In your Python script, import the required libraries for the example:
 Initialize the Multion toolkit and log in to your Multion account:
 
 ```python copy
-  toolkit = MultionToolkit()
-  tools=toolkit.get_tools()
+  multion_toolkit = MultionToolSpec(use_api=True, mode="auto")
+  browser = StructuredTool.from_function(multion_toolkit.browse)
+
   multion.login()
 ```
 
 ### Create OpenAI Language Model Instance
 
 Create an instance of the OpenAI language model using API key
+
 - Replace **"YOUR_OPENAI_API_KEY"** with your actual OpenAI API key:
 
 ```python copy
   llm = OpenAI(temperature=0, openai_api_key="YOUR_OPENAI_API_KEY")
 ```
-
 
 ### Initialize Agent
 
@@ -48,7 +49,7 @@ Initialize the agent for structured chat with zero-shot reaction description:
 
 ```python copy
   agent = initialize_agent(
-    tools=toolkit.get_tools(),
+    tools=[browser],
     llm=llm,
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True
@@ -57,12 +58,25 @@ Initialize the agent for structured chat with zero-shot reaction description:
 
 ### Run the Agent
 
-Run the agent with a user query. Update the query variable with your desired email content:
+Run the agent with a user query. Update the query variable with your desired event link:
 
 ```python copy
-  query = "Send a warm email greeting to div@multion.com"
-  agent.run(query)
+EVENT = "https://lu.ma/11-16"
+
+PROMPT = f"""
+You are an AI Agent whose job is to RSVP users to event websites. Here is the event link: {EVENT}. DO NOT guess or make up any user information, instead ask user to provide any missing info. Do not use any placeholders. Pass in the full detailed instructions exactly as below to MultiOn for browsing.
+
+Here are the high-level steps:
+1. Register for the event
+2. Skip sign in
+3. Fill out the application form. DO NOT guess any information. Ask the user for any information you need.
+4. After filling out the form, submit the application
+5. Verify that the user is RSVP'd
+"""
+
+response = agent(query=PROMPT)
 ```
 
 Thank you for exploring this LangChain example. 😀
+
 - Should you have any questions, feel free to reach out on our Discord channel or directly to our team. Happy building! 😊
