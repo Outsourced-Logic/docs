@@ -1,4 +1,5 @@
 {
-  "langchain_examples":"LangChain Integration",
-  "llamahub_examples":"LlamaHub Integration"
+  "langchain_examples": "LangChain Integration",
+  "llamahub_examples": "LlamaHub Integration",
+  "openai_assistants_examples": "OpenAI Assistants Integration"
 }
