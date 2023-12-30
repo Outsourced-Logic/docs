@@ -1,6 +1,5 @@
-{   "login":"Login",
-    "create_session":"Create Session",
-    "update_session":"Update Session",
-    "close_session":"Close Session",
-    "session_list":"Session List"
+{
+  "login": "Login",
+  "browse": "Browse",
+  "low_level_API": "Low Level API"
 }

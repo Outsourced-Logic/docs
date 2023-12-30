@@ -22,12 +22,12 @@ import { Tabs, Tab } from 'nextra/components'
    await multion.login(); // Wait for login to complete
 
 
-   response = await multion.newSession({"input": f"Weather Today","url": "https://www.google.com"});
+   response = await multion.createSession({"input": f"Weather Today","url": "https://www.google.com"});
    console.log(response)
    let sessionId = response['session_id']
   ```
   ```js copy
-  response = await multion.update_session(sessionId, {"input": f"Weather Today","url": "https://www.google.com"})
+  response = await multion.stepSession(sessionId, {"input": f"Weather Today","url": "https://www.google.com"})
   response
   ```
 <Callout type="info" emoji="ℹ️">
