@@ -38,12 +38,12 @@ To step a session, you'll need to provide the session ID (sessionId) and the new
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
-    response = multion.step_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
+    response = multion.step_session(sessionId, {"input": "what is the weather today","url": "https://www.google.com"})
   ```
   </Tab>
   <Tab>
   ``` js copy 
-    await multion.step_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
+    await multion.step_session(sessionId, {"input": "what is the weather today","url": "https://www.google.com"})
   ```
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
