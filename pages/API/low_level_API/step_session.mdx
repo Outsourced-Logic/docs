@@ -1,6 +1,6 @@
-# Update a Session
+# Step a Session
 
-Update an existing MultiOn session with a new user command.
+Step an existing MultiOn session with a new user command.
 
 ## Dependencies
 
@@ -25,25 +25,25 @@ import { Tabs, Tab } from 'nextra/components'
   </Tab>
 </Tabs>
 
-## Update Session
+## Step Session
 
-To update a session, you'll need to provide the session ID (sessionId) and the new input parameters.
+To step a session, you'll need to provide the session ID (sessionId) and the new input parameters.
 
 ### Required Parameters
 
 - **sessionId**: The unique identifier of the session you wish to update.
-- **input**: The new or additional information for the session.
+- **input**: The new or additional user instruction for the session.
 - **url**: The URL relevant to the updated request.
 
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
-    response = multion.update_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
+    response = multion.step_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
   ```
   </Tab>
   <Tab>
   ``` js copy 
-    await multion.update_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
+    await multion.step_session(sessionId, {"input": f"what is the weather today","url": "https://www.google.com"})
   ```
 <Callout type="info" emoji="ℹ️">
  Run above code using **node**
@@ -68,5 +68,3 @@ curl --location 'https://api.multion.ai/session/{sessionId}' \
 
 - Explore additional examples and detailed API usage at the [MultiOn API repository](https://github.com/MULTI-ON/api)
 
-
-```

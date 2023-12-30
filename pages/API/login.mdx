@@ -4,82 +4,82 @@ The following documentation provides a step-by-step guide to using the Multion A
 
 ## Dependencies
 
-import { Callout } from 'nextra/components'
-import { Tabs, Tab } from 'nextra/components'
- 
-<Tabs items={['Python', 'JS', 'Curl']}>
-  <Tab>
-  ```python copy
-  pip install multion
-  ```
-  </Tab>
-  <Tab>
-  ``` js copy 
-  npm install multion
-  ```
-  </Tab>
-  <Tab>
-  ```curl copy
-For Curl, an authorization token or API Key is needed. See instructions below.
+import { Callout } from "nextra/components";
+import { Tabs, Tab } from "nextra/components";
 
-````
-</Tab>
+<Tabs defaultValue="python" items={['Python', 'JS', 'Curl']}>
+  <Tab value="python">
+    ```python copy
+    pip install multion
+    ```
+  </Tab>
+  <Tab value="js">
+    ```js copy 
+    npm install multion
+    ```
+  </Tab>
+  <Tab value="curl">
+    ```bash copy
+    # For Curl, an authorization token or API Key is needed. See instructions below.
+    ```
+  </Tab>
 </Tabs>
 
 ## Authorization
+
 By default, the Multion API uses OAuth2 for secure authentication. This method ensures the safety and privacy of your data. Follow the standard OAuth2 flow to authenticate your application.
 
-<Tabs items={['Python', 'JS', 'Curl']}>
-
-<Tab>
-
-```python copy
-  multion.login()
-````
-
+<Tabs defaultValue="python" items={["Python", "JS", "Curl"]}>
+  <Tab value="python" label="Python">
+    ```python copy 
+    import multion 
+    multion.login()
+    ```
   </Tab>
-  <Tab>
-  ``` js copy 
-    await multion.login()
-  ```
-<Callout type="info" emoji="ℹ️">
- Run above code using **node**
-</Callout>
+  <Tab value="js" label="JavaScript">
+    ``` js copy 
+    import multion from 'multion'; 
+    await multion.login(); 
+    ```
+    <Callout type="info" emoji="ℹ️">
+      Ensure you have Node.js environment setup to run the above code.
+    </Callout>
   </Tab>
-  <Tab>
-  ```curl copy
-Generate Authorization Token using Python or JS. Token will be stored at the specified location.
-  ```
+  <Tab value="curl" label="Curl">
+    ```bash copy 
+    # Use the provided SDKs to generate an authorization token for Curl requests. 
+    ```
   </Tab>
 </Tabs>
 
 ## Optional: Generating API Keys
 
-If you prefer using API keys instead of OAuth2, you can generate them with the `use_api=True` argument in your login method.
+If you prefer using API keys instead of OAuth2, you can generate them with the `use_api=True` option in your login method.
 
-<Tabs items={['Python', 'JS', 'Curl']}>
-<Tab>
- ```python copy
- # Generate API Key using Python
- multion.login(use_api=True)
- ```
+<Tabs defaultValue="python" items={['Python', 'JS', 'Curl']}>
+  <Tab value="python" label="Python">
+  ```python copy
+  # Generate API Key using Python
+   multion.login(use_api=True)
+````
+</Tab>
+<Tab value="js" label="JavaScript">
+``` js copy
+// Generate API Key using JavaScript
+await multion.login({use_api: true})
+````
+
   </Tab>
-  <Tab>
- ``` js copy 
- // Generate API Key using JavaScript
- await multion.login({use_api: true})
- ```
-  </Tab>
-  <Tab>
- ```curl copy
-Generate an api key by visiting [app.multion.ai](https://app.multion.ai/api-tokens)
-Save the api key as MULTION_API_KEY environment variable
- ```
+  <Tab value="curl" label="Curl">
+  ```bash copy
+  # Visit the following URL to generate an API key: https://app.multion.ai/api-tokens
+  # Save the API key in the MULTION_API_KEY environment variable.
+  ```
   </Tab>
 </Tabs>
 
-- The API key will be automatically stored in your system and used for subsequent API requests.
+- Your API key or access token will be used automatically for all subsequent API requests.
 
 ### Additional Resources
 
-- For more examples and in-depth usage scenarios, visit the [Multion API Repository](https://github.com/MULTI-ON/api).
+- Explore more examples and detailed usage scenarios in the [Multion API Repository](https://github.com/MULTI-ON/api).

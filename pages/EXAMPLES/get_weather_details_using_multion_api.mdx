@@ -41,7 +41,7 @@ If necessary, set the remote option using the following code:
 Create a new session to initiate the weather query:
 
 ```python copy
-  response = multion.new_session({"input": "what is the weather today","url": "https://www.google.com"})
+  response = multion.create_session({"url": "https://www.google.com"})
   print(response['message'])
   session_id = response['session_id']
   session_id
@@ -52,7 +52,7 @@ Create a new session to initiate the weather query:
 If needed, update the session with additional information:
 
 ```python copy
-  response = multion.update_session(session_id, {"input": "what is the weather today","url": "https://www.google.com"})
+  response = multion.step_session(session_id, {"input": "what is the weather today","url": "https://www.google.com"})
   response['message']
 ```
 

@@ -4,30 +4,6 @@ import Image from "next/image";
 
 This section explains how to create a new session with the MultiOn Agent. A session in this context refers to a stateful instance of interaction with our Agent for a specific user query or workflow.
 
-## Understanding Sessions
-
-<br />
-<center>
-  {" "}
-  <img src="../api.svg" alt="Add_to_chrome" style={{ width: "3000px" }} />{" "}
-</center>
-<br />
-
-- **Session Lifecycle**: A session begins when you initiate it with a input url and prompt and ends whens the Agent has completed the task with the required Actions. Each session is isolated, ensuring that data and interactions are not shared across sessions.
-- **Use Cases**: Sessions are ideal for handling individual queries, like fetching weather updates or executing a specific task.
-- **Security**: Sessions maintain high levels of security, as each session is authenticated and isolated, protecting the integrity of your data and interactions.
-
-## Session Input
-
-- **input**: The user input query or command for the session. This should be a clear, concise statement of what you need.
-  - Example: `"input": "Weather Today in SF"`
-- **url**: The URL where the session will start from. This should be a valid, accessible URL.
-  - Example: `"url": "https://www.google.com"`
-
-### Optional Parameters
-
-- You can also include additional parameters to refine your session's behavior and responses. Refer to the API documentation for a full list of optional parameters.
-
 ## Dependencies
 
 import { Callout } from "nextra/components";
@@ -55,7 +31,16 @@ To get started, make sure you have the required dependencies installed:
 
 ## Create Session
 
-Create a new session by running the following code:
+To create a new session you will have to provide the language input and url parameters:
+
+### Required Parameters
+
+- **input**: The user input query for the session. This should be a clear, concise statement of what you need.
+- **url**: The URL where the session will start from. This should be a valid, accessible URL.
+
+### Optional Parameters
+
+- You can also include additional parameters to refine your session's behavior and responses. Refer to the API documentation for a full list of optional parameters.
 
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>

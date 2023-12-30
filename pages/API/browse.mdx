@@ -1,0 +1,152 @@
+import Image from "next/image";
+import { Callout, Tabs, Tab } from "nextra/components";
+
+# Perform a single MultiOn browsing session
+
+The Browse API allows you to perform a single browsing session with the MultiOn Web Agent. A session in this context refers to a stateful instance of interaction with our Agent for a specific user query or workflow.
+
+## Understanding Sessions
+
+<Image src="../api.svg" alt="Session Lifecycle" width={3000} height={2000} />
+
+- **Session Lifecycle**: A session begins when you initiate it with an input URL and an instruction prompt and ends when the Agent has completed the task with the required Actions. Each session is isolated, ensuring that data and interactions are not shared across sessions.
+- **Use Cases**: Sessions are ideal for handling individual queries, like fetching weather updates or executing a specific task.
+- **Security**: Sessions maintain high levels of security, as each session is authenticated and isolated, protecting the integrity of your data and interactions.
+
+## Browse Input
+
+Here's what you need to start a session:
+
+```json
+{
+  "cmd": "Your command here", // The user input query or command for the session.
+  "url": "https://www.example.com", // The URL where the session will start from.
+  "maxIterations": 10, // The maximum number of steps the session will take before stopping.
+  "sessionId": "optional-session-id" // A unique identifier to continue a previous browse session (optional).
+}
+```
+
+### Optional Parameters
+
+Additional parameters can be included to refine your session's behavior and responses. Refer to the API documentation for a full list of optional parameters.
+
+## Dependencies
+
+To get started, make sure you have the required dependencies installed:
+
+<Tabs defaultValue="python" items={['Python', 'JS', 'Curl']}>
+  <Tab value="python">
+    ```python copy
+    pip install multion
+    ```
+  </Tab>
+  <Tab value="js">
+    ```js copy 
+    npm install multion
+    ```
+  </Tab>
+  <Tab value="curl">
+    ```bash copy
+    # Check login API page to know how to generate <AUTH_TOKEN>
+    ```
+  </Tab>
+</Tabs>
+
+## Browse
+
+Create a new browse session by running the following code in your preferred language:
+
+<Tabs defaultValue="python" items={['Python', 'JS', 'Curl']}>
+  <Tab value="python">
+    ```python copy
+    response = multion.browse({
+      "cmd": "Weather Today",
+      "url": "https://www.google.com",
+      "maxIterations": 5
+    })
+    print(response)
+    ```
+  </Tab>
+  <Tab value="js">
+    ```js copy 
+    const response = await multion.browse({
+      cmd: "Weather Today",
+      url: "https://www.google.com",
+      maxIterations: 5
+    });
+    console.log(response);
+    ```
+    <Callout type="info" emoji="ℹ️">
+      Ensure you're running the above code using **Node.js**.
+    </Callout>
+  </Tab>
+  <Tab value="curl">
+    ```bash copy
+    # Pass either the <AUTH_TOKEN> or the <API_KEY> in the header.
+    curl --location 'https://api.multion.ai/browse' \
+      --header 'Content-Type: application/json' \
+      --header 'Authorization: Bearer <AUTH_TOKEN>' \ # Use this for OAuth
+      --header 'X_MULTION_API_KEY: <API_KEY>' \ # Or use this for API Key
+      --data-raw '{
+        "cmd": "Weather Today",
+        "url": "https://www.google.com",
+        "maxIterations": 5
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+## Response Body
+
+The server will respond with different status codes depending on the outcome of the request. Here's what you can expect:
+
+### Success Response
+
+```json
+{
+  "sessionId": "unique-session-id", // The session ID of the current session
+  "status": "DONE", // The current status of the browsing session
+  "result": "response-result", // The response of the last step of the browsing session
+  "lastUrl": "https://google.com", // The last URL where the browsing session stopped
+  "content": "page-content", // The content of the page where the session stopped
+  "screenshot": "image-url" // The screenshot of the page where the session stopped
+}
+```
+
+### Client Error Responses
+
+Handle these responses appropriately in your application for a smooth user experience:
+
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "The server could not understand the request due to invalid syntax."
+}
+```
+
+```json
+{
+  "statusCode": 401,
+  "error": "Unauthorized",
+  "message": "The request lacks valid authentication credentials for the target resource."
+}
+```
+
+```json
+{
+  "statusCode": 402,
+  "error": "Payment Required",
+  "message": "The request cannot be processed until the client makes a payment."
+}
+```
+
+```json
+{
+  "statusCode": 500,
+  "error": "Internal Server Error",
+  "message": "The server encountered an unexpected condition that prevented it from fulfilling the request."
+}
+```
+
+- Explore more samples at [API repository](https://github.com/MULTI-ON/api).
