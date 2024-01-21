@@ -8,11 +8,20 @@ import { Callout } from "nextra/components";
 import { Tabs, Tab } from "nextra/components";
 
 <Tabs defaultValue="python" items={["Python", "JS", "Curl"]}>
-  <Tab value="python">```python copy pip install multion ```</Tab>
-  <Tab value="js">```js copy npm install multion ```</Tab>
+  <Tab value="python">
+  ```python copy 
+  pip install multion
+  ```
+  </Tab>
+  <Tab value="js">
+  ```js copy 
+  npm install multion 
+  ```
+  </Tab>
   <Tab value="curl">
-    ```bash copy # For Curl, an authorization token or API Key is needed. See
-    instructions below. ```
+    ```bash copy
+    # For Curl, an authorization token or API Key is needed. See instructions below. 
+    ```
   </Tab>
 </Tabs>
 
@@ -22,17 +31,24 @@ By default, the Multion API uses OAuth2 for secure authentication. This method e
 
 <Tabs defaultValue="python" items={["Python", "JS", "Curl"]}>
   <Tab value="python" label="Python">
-    ```python copy import multion multion.login() ```
+    ```python copy 
+    import multion 
+    multion.login() 
+    ```
   </Tab>
   <Tab value="js" label="JavaScript">
-    ``` js copy import multion from 'multion'; await multion.login(); ```
+    ``` js copy 
+    import multion from 'multion'; 
+    await multion.login(); 
+    ```
     <Callout type="info" emoji="ℹ️">
       Ensure you have Node.js environment setup to run the above code.
     </Callout>
   </Tab>
   <Tab value="curl" label="Curl">
-    ```bash copy # Use the provided SDKs to generate an authorization token for
-    Curl requests. ```
+    ```bash copy 
+    # Use the provided SDKs to generate an authorization token for Curl requests. 
+    ```
   </Tab>
 </Tabs>
 
