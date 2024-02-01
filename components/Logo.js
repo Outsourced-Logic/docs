@@ -1,9 +1,7 @@
-// src/components/Logo.js
-
 import React, { useState, useLayoutEffect } from 'react';
 import { isDarkTheme, listenThemeChange } from '../utils';
 
-const Logo = ({ height }) => {
+const Logo = (props) => {
   const [ isDark, setIsDark ] = useState();
 
   useLayoutEffect(() => {
@@ -17,7 +15,7 @@ const Logo = ({ height }) => {
   return <>
     {
       isDark ? 
-      <MultionLogo color="#ffffff" /> : <MultionLogo color="#000000" />
+      <MultionLogo color="#ffffff" {...props} /> : <MultionLogo color="#000000"  {...props} />
     }
   </>
 };
