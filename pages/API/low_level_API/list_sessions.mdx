@@ -9,15 +9,15 @@ List the currently running sessions with the MultiOn Agent. This is crucial for 
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
- 
+
 <Tabs items={['Python', 'JS', 'CURL']}>
   <Tab>
   ```python copy
-  pip install multion
+  pip install multion -U
   ```
   </Tab>
   <Tab>
-  ``` js copy 
+  ``` js copy
   npm install multion
   ```
   </Tab>
@@ -34,12 +34,12 @@ Retrieve a list of all active sessions using the following sample code:
 
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
-  ```python copy
-    multion.list_sessions()
-  ```
+```python copy
+multion.list_sessions()
+```
   </Tab>
   <Tab>
-  ``` js copy 
+  ``` js copy
     await multion.list_sessions()
   ```
 <Callout type="info" emoji="ℹ️">
@@ -58,4 +58,3 @@ curl --location 'https://api.multion.ai/sessions/' \
 </Tabs>
 
 - For additional examples and detailed API usage, visit the [MultiOn API repository](https://github.com/MULTI-ON/api).
-

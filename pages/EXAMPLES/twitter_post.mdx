@@ -1,6 +1,6 @@
-# Get weather details using Multion-API ✨
+# Post to twitter using Multion-API ✨
 
-This example goes over how to use multion API to get today's weather details.
+This example goes over how to use multion API to post to twitter.
 
 ### Install Required Packages
 
@@ -22,22 +22,12 @@ import multion
 
 See various ways of login here: [Login](../../API/login.mdx)
 
-### Set API Mode
-Switch the API to local mode to run the Agent locally with the MultiOn Browser Extension for development and testing
-
-(You can enable the remote mode to run on our hosted cloud for production use)
-
-```python copy
-response = multion.set_remote(False)
-```
-
-
 ### Create a New Session
 
-Create a new session to initiate the weather query:
+Create a new session to initiate the conversation with twitter:
 
 ```python copy
-response = multion.create_session({"url": "https://www.google.com"})
+response = multion.create_session({"url": "https://twitter.com"})
 print(response['message'])
 session_id = response['session_id']
 session_id
@@ -48,18 +38,23 @@ session_id
 If needed, update the session with additional information:
 
 ```python copy
-response = multion.step_session(session_id, {"input": "what is the weather today","url": "https://www.google.com"})
-response['message']
+username = "<your twitte username>"
+password = "<your twitter password>"
+prompt = "Please post 'Hi from Multi-ON API. ' using username {username} and password as {password}."
+url = "https://twitter.com"
+
+while True:
+    res = multion.step_session(session_id,{"input":  prompt, "url": url})
+
+    print(res)
+    if res['status'] == 'DONE':
+        print('task completed')
+        break
+    # Check the status if done break%
 ```
 
-
-### Capture Screenshot
-
-Capture a screenshot of the weather details:
-
-```python copy
-multion.get_screenshot(response, height=800)
-```
+### Pro Tip:
+You can see the screenshot of each step in `response["screenshot"]`
 
 ### Close Session
 

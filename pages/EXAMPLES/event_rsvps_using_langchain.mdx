@@ -7,8 +7,8 @@ This example goes over how to leverage LangChain with Multion to rsvp to event i
 Ensure you have the necessary packages installed by running the following commands in your terminal:
 
 ```python copy
-  pip install multion
-  pip install langchain
+pip install multion -U
+pip install langchain
 ```
 
 ### Import Required Libraries
@@ -16,10 +16,11 @@ Ensure you have the necessary packages installed by running the following comman
 In your Python script, import the required libraries for the example:
 
 ```python copy
-  import multion
-  from multion import MultionToolSpec
-  from langchain.llms.openai import OpenAI
-  from langchain.agents import initialize_agent, AgentType
+import multion
+from multion import MultionToolSpec
+from langchain.llms.openai import OpenAI
+from langchain.agents import initialize_agent, AgentType
+from langchain.tools.base import StructuredTool
 ```
 
 ### Initialize Multion and Log In
@@ -27,10 +28,10 @@ In your Python script, import the required libraries for the example:
 Initialize the Multion toolkit and log in to your Multion account:
 
 ```python copy
-  multion_toolkit = MultionToolSpec(use_api=True, mode="auto")
-  browser = StructuredTool.from_function(multion_toolkit.browse)
+multion_toolkit = MultionToolSpec(use_api=True, mode="auto")
+browser = StructuredTool.from_function(multion_toolkit.browse)
 
-  multion.login()
+multion.login()
 ```
 
 ### Create OpenAI Language Model Instance
@@ -40,7 +41,7 @@ Create an instance of the OpenAI language model using API key
 - Replace **"YOUR_OPENAI_API_KEY"** with your actual OpenAI API key:
 
 ```python copy
-  llm = OpenAI(temperature=0, openai_api_key="YOUR_OPENAI_API_KEY")
+llm = OpenAI(temperature=0, openai_api_key="YOUR_OPENAI_API_KEY")
 ```
 
 ### Initialize Agent
@@ -48,12 +49,12 @@ Create an instance of the OpenAI language model using API key
 Initialize the agent for structured chat with zero-shot reaction description:
 
 ```python copy
-  agent = initialize_agent(
+agent = initialize_agent(
     tools=[browser],
     llm=llm,
     agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True
-  )
+)
 ```
 
 ### Run the Agent
