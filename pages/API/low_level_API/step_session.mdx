@@ -6,15 +6,15 @@ Step an existing MultiOn session with a new user command.
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
- 
+
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
   ```python copy
-  pip install multion
+  pip install multion -U
   ```
   </Tab>
   <Tab>
-  ``` js copy 
+  ``` js copy
   npm install multion
   ```
   </Tab>
@@ -37,12 +37,12 @@ To step a session, you'll need to provide the session ID (sessionId) and the new
 
 <Tabs items={['Python', 'JS', 'Curl']}>
   <Tab>
-  ```python copy
-    response = multion.step_session(sessionId, {"input": "what is the weather today","url": "https://www.google.com"})
-  ```
+```python copy
+response = multion.step_session(sessionId, {"input": "what is the weather today","url": "https://www.google.com"})
+```
   </Tab>
   <Tab>
-  ``` js copy 
+  ``` js copy
     await multion.step_session(sessionId, {"input": "what is the weather today","url": "https://www.google.com"})
   ```
 <Callout type="info" emoji="ℹ️">
@@ -67,4 +67,3 @@ curl --location 'https://api.multion.ai/session/{sessionId}' \
 </Tabs>
 
 - Explore additional examples and detailed API usage at the [MultiOn API repository](https://github.com/MULTI-ON/api)
-

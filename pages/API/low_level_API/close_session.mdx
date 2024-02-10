@@ -11,15 +11,15 @@ Close an existing session with the MultiOn Agent. This is useful for conclude an
 
 import { Callout } from 'nextra/components'
 import { Tabs, Tab } from 'nextra/components'
- 
+
 <Tabs items={['Python', 'JS','Curl']}>
   <Tab>
   ```python copy
-  pip install multion
+  pip install multion -U
   ```
   </Tab>
   <Tab>
-  ``` js copy 
+  ``` js copy
   npm install multion
   ```
   </Tab>
@@ -36,12 +36,12 @@ import { Tabs, Tab } from 'nextra/components'
   <Tab>
 
 ```python copy
-  multion.close_session(sessionId)
+multion.close_session(sessionId)
 ```
 
   </Tab>
   <Tab>
-  ``` js copy 
+  ``` js copy
     await multion.close_session(sessionId)
   ```
 <Callout type="info" emoji="ℹ️">
@@ -60,4 +60,3 @@ curl --location --request DELETE 'https://api.multion.ai/session/{sessionId}' \
 </Tabs>
 
 - For more examples and detailed API usage, explore the [MultiOn API repository](https://github.com/MULTI-ON/api).
-
